@@ -1,0 +1,65 @@
+# Node/monorepo
+node_modules/
+**/node_modules/
+dist/
+build/
+out/
+coverage/
+.nyc_output/
+*.tsbuildinfo
+
+# Logs / runtime
+logs
+*.log
+*.pid
+*.seed
+*.pid.lock
+.metro-health-check*
+
+# Env
+.env
+.env.*
+!.env.example
+
+# IDE/OS
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# React Native / Expo
+.expo/
+.expo-shared/
+web-build/
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+
+# iOS/Android
+ios/Pods/
+android/.gradle
+android/local.properties
+*.apk
+*.aab
+
+# Pacotes/artefatos
+*.tgz
+*.zip
+*.tar.gz
+*.rar
+
+# Dumps/arquivos grandes
+library-data.sql
+backup/
+mtgCards.json
+
+# Project specifics
+reqs.http

@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@nestjs/config": "^4.0.2",
+    "rsync": "^0.6.1"
+  }
+}

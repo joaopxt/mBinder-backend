@@ -1,0 +1,36 @@
+# Sobe db e backend juntos (builda se precisar)
+docker compose up -d --build
+
+# Sobe apenas o backend
+docker compose up -d backend
+
+# Ver status
+docker compose ps
+
+# Ver logs dos dois
+docker compose logs -f db backend
+
+# Conectando ao DROPLET
+ssh -i ~/.ssh/id_ed25519_do root@206.189.172.226
+
+# Zipando o backend
+$stamp = Get-Date -Format "yyyyMMdd-HHmm"
+$pkg = "mbinder-backend-$stamp.tgz"
+tar -czf $pkg `
+  --exclude='backend/node_modules' `
+  --exclude='backend/dist' `
+  --exclude='backend/test' `
+  backend docker-compose.yml .env
+Write-Host "Gerado: $pkg"
+
+# Enviando o zip para o DROPLET
+scp -i "C:\Users\joaop\.ssh\id_ed25519_do" ".\$pkg" root@206.189.172.226:/root/mBinder/
+
+# Extraindo o zip no DROPLET
+ssh -i ~/.ssh/id_ed25519_do root@206.189.172.226
+cd /root/mBinder
+tar -xzf mbinder-backend-*.tgz
+docker compose config
+docker compose up -d --build
+docker compose ps
+docker compose logs -f backend
